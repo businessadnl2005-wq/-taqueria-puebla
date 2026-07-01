@@ -1,0 +1,10 @@
+[build]
+  functions = "netlify/functions"
+  publish = "."
+
+# Esto permite que el frontend siga llamando a /api/chat (más limpio)
+# aunque Netlify internamente sirva la función en /.netlify/functions/chat
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200

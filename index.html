@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taquería Puebla — Fresno, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F3E8D6;
+    --white:#FFFDF8;
+    --ink:#2B211A;
+    --blue:#2757A3;
+    --blue-deep:#1B3E7C;
+    --marigold:#E8A93B;
+    --terracotta:#C0432A;
+    --line: rgba(43,33,26,0.14);
+    --tile: 32px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .display{
+    font-family:'Coustard', serif;
+    font-weight:900;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.02em;
+  }
+  a{color:inherit;}
+  img{display:block; max-width:100%;}
+  :focus-visible{outline:3px solid var(--blue); outline-offset:3px;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  /* Talavera tile divider — signature element */
+  .tile-divider{
+    height: var(--tile);
+    background:
+      conic-gradient(var(--blue) 90deg, var(--marigold) 90deg 180deg, var(--white) 180deg 270deg, var(--terracotta) 270deg 360deg)
+      0 0 / var(--tile) var(--tile);
+    background-repeat: repeat-x;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .tile-divider{ transition: background-position 0.6s ease; }
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px;
+    max-width:1120px; margin:0 auto;
+  }
+  .brand{
+    font-family:'Coustard', serif; font-weight:900;
+    font-size:22px; color:var(--blue-deep);
+    text-transform:uppercase; letter-spacing:0.02em;
+  }
+  .brand span{color:var(--terracotta);}
+  nav.links{display:flex; gap:28px; font-size:14px; font-weight:500;}
+  nav.links a{text-decoration:none; border-bottom:2px solid transparent; padding-bottom:2px;}
+  nav.links a:hover{border-color:var(--terracotta);}
+  .nav-cta{
+    background:var(--terracotta); color:var(--white);
+    padding:10px 18px; border-radius:2px; font-size:13px; font-weight:600;
+    text-decoration:none; text-transform:uppercase; letter-spacing:0.04em;
+  }
+
+  /* ---------- HERO ---------- */
+  .bunting{
+    display:flex; justify-content:center; gap:2px; padding-top:28px;
+  }
+  .flag{
+    width:0; height:0;
+    border-left:14px solid transparent;
+    border-right:14px solid transparent;
+    border-top:22px solid var(--blue);
+  }
+  .flag:nth-child(4n+2){border-top-color:var(--marigold);}
+  .flag:nth-child(4n+3){border-top-color:var(--terracotta);}
+  .flag:nth-child(4n+4){border-top-color:var(--blue-deep);}
+
+  .hero{
+    padding:32px 24px 72px;
+    text-align:center;
+    position:relative;
+    clip-path: polygon(0 0,100% 0,100% 94%, 95% 100%, 90% 94%, 85% 100%, 80% 94%, 75% 100%, 70% 94%, 65% 100%, 60% 94%, 55% 100%, 50% 94%, 45% 100%, 40% 94%, 35% 100%, 30% 94%, 25% 100%, 20% 94%, 15% 100%, 10% 94%, 5% 100%, 0 94%);
+    background: radial-gradient(circle at 50% -10%, rgba(232,169,59,0.18), transparent 60%);
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--terracotta); margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(42px, 8vw, 84px);
+    color:var(--blue-deep);
+    max-width:900px; margin:0 auto 20px;
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--terracotta);
+  }
+  .hero p.sub{
+    max-width:520px; margin:0 auto 32px;
+    font-size:17px; color:rgba(43,33,26,0.8);
+  }
+  .hero-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--blue-deep); color:var(--white);
+    padding:14px 26px; text-decoration:none;
+    font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.04em;
+    border-radius:2px;
+  }
+  .btn-secondary{
+    background:transparent; color:var(--ink);
+    border:1.5px solid var(--ink);
+    padding:14px 26px; text-decoration:none;
+    font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.04em;
+    border-radius:2px;
+  }
+
+  /* ---------- SECTIONS shared ---------- */
+  section{padding:88px 24px;}
+  .section-head{max-width:640px; margin:0 auto 52px; text-align:center;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(30px,4vw,44px); color:var(--blue-deep);}
+  .section-head p{margin-top:14px; color:rgba(43,33,26,0.75); font-size:16px;}
+
+  /* ---------- STORY ---------- */
+  .story{
+    display:grid; grid-template-columns: 1fr 1fr; gap:56px; align-items:center;
+    max-width:1120px; margin:0 auto; padding:88px 24px;
+  }
+  .story img{
+    border-radius:4px;
+    aspect-ratio:4/5; object-fit:cover;
+    border:6px solid var(--white);
+    box-shadow: 0 18px 40px rgba(43,33,26,0.18);
+  }
+  .story h2{font-size:clamp(28px,4vw,38px); color:var(--blue-deep); margin-bottom:18px;}
+  .story p{color:rgba(43,33,26,0.85); margin-bottom:14px;}
+  .story .stat-row{display:flex; gap:32px; margin-top:28px;}
+  .stat b{display:block; font-family:'Coustard',serif; font-size:26px; color:var(--terracotta);}
+  .stat span{font-size:13px; color:rgba(43,33,26,0.65);}
+
+  /* ---------- MENU ---------- */
+  .menu-tabs{
+    display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:44px;
+  }
+  .tab-btn{
+    background:var(--white); border:1.5px solid var(--line);
+    padding:10px 20px; border-radius:999px; font-size:13px; font-weight:600;
+    cursor:pointer; text-transform:uppercase; letter-spacing:0.03em; color:var(--ink);
+  }
+  .tab-btn.active{background:var(--blue-deep); color:var(--white); border-color:var(--blue-deep);}
+  .menu-grid{
+    display:none; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px; max-width:900px; margin:0 auto;
+  }
+  .menu-grid.active{display:grid;}
+  .dish{
+    background:var(--white); border:1px solid var(--line); border-radius:4px;
+    padding:20px 22px; display:flex; justify-content:space-between; gap:16px;
+  }
+  .dish h3{font-family:'Work Sans'; font-weight:600; font-size:16px; margin-bottom:6px;}
+  .dish p{font-size:13.5px; color:rgba(43,33,26,0.65);}
+  .dish .price{
+    font-family:'JetBrains Mono'; font-weight:500; color:var(--terracotta);
+    white-space:nowrap; font-size:15px;
+  }
+  .dish.veg h3::after{content:" · veg"; font-size:11px; color:var(--blue); font-family:'JetBrains Mono';}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:1120px; margin:0 auto;
+  }
+  .gallery img{width:100%; height:220px; object-fit:cover; border-radius:3px;}
+  .gallery a:nth-child(1) img, .gallery a:nth-child(4) img{height:320px;}
+  .gallery a:nth-child(1), .gallery a:nth-child(4){grid-row: span 1;}
+
+  /* ---------- LOCATION ---------- */
+  .location{
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    max-width:1120px; margin:0 auto; border:1px solid var(--line); border-radius:4px; overflow:hidden;
+  }
+  .location .info{background:var(--blue-deep); color:var(--white); padding:52px 44px;}
+  .location h2{font-size:30px; margin-bottom:24px;}
+  .info-row{margin-bottom:22px;}
+  .info-row .label{font-family:'JetBrains Mono'; font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--marigold); margin-bottom:6px;}
+  .info-row .value{font-size:15px; line-height:1.6;}
+  .location .map-block{
+    background: var(--marigold);
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0 2px, transparent 2px 14px);
+    display:flex; align-items:center; justify-content:center; padding:40px;
+    min-height:320px;
+  }
+  .map-card{
+    background:var(--white); padding:28px; border-radius:4px; text-align:center; max-width:280px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.15);
+  }
+  .map-card .display{font-size:20px; color:var(--blue-deep); margin-bottom:10px;}
+  .map-card p{font-size:13.5px; color:rgba(43,33,26,0.7);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:48px 24px 32px; text-align:center;}
+  footer .brand{justify-content:center; display:flex; margin-bottom:12px;}
+  footer p{font-size:13px; color:rgba(43,33,26,0.6);}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .story{grid-template-columns:1fr;}
+    .location{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+  }
+
+  /* ---------- CHATBOT ---------- */
+  #chat-toggle{
+    position:fixed; bottom:24px; right:24px; z-index:100;
+    width:60px; height:60px; border-radius:50%; border:none; cursor:pointer;
+    background: conic-gradient(var(--blue) 90deg, var(--marigold) 90deg 180deg, var(--white) 180deg 270deg, var(--terracotta) 270deg 360deg);
+    box-shadow:0 10px 26px rgba(43,33,26,0.35);
+    display:flex; align-items:center; justify-content:center;
+  }
+  #chat-toggle svg{width:26px; height:26px;}
+  #chat-panel{
+    position:fixed; bottom:96px; right:24px; z-index:100;
+    width:340px; max-width:calc(100vw - 32px);
+    height:460px; max-height:calc(100vh - 140px);
+    background:var(--white); border-radius:8px; border:1px solid var(--line);
+    box-shadow:0 20px 60px rgba(43,33,26,0.35);
+    display:none; flex-direction:column; overflow:hidden;
+  }
+  #chat-panel.open{display:flex;}
+  .chat-head{
+    background:var(--blue-deep); color:var(--white); padding:16px 18px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .chat-head .t{font-family:'Coustard',serif; font-size:15px;}
+  .chat-head .s{font-size:11px; color:var(--marigold); font-family:'JetBrains Mono';}
+  .chat-close{background:none; border:none; color:var(--white); font-size:20px; cursor:pointer; line-height:1;}
+  #chat-messages{
+    flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px;
+    background:var(--cream);
+  }
+  .msg{max-width:85%; padding:10px 13px; border-radius:10px; font-size:13.5px; line-height:1.5;}
+  .msg.bot{background:var(--white); border:1px solid var(--line); align-self:flex-start; border-bottom-left-radius:2px;}
+  .msg.user{background:var(--blue-deep); color:var(--white); align-self:flex-end; border-bottom-right-radius:2px;}
+  .msg.typing{background:var(--white); border:1px solid var(--line); align-self:flex-start; display:flex; gap:4px; padding:12px 14px;}
+  .dot{width:6px; height:6px; border-radius:50%; background:var(--blue); opacity:0.4; animation:blink 1.2s infinite;}
+  .dot:nth-child(2){animation-delay:0.2s;} .dot:nth-child(3){animation-delay:0.4s;}
+  @keyframes blink{0%,80%,100%{opacity:0.3;} 40%{opacity:1;}}
+  #chat-form{display:flex; gap:8px; padding:12px; border-top:1px solid var(--line); background:var(--white);}
+  #chat-input{
+    flex:1; border:1px solid var(--line); border-radius:6px; padding:10px 12px;
+    font-family:'Work Sans'; font-size:13.5px; resize:none;
+  }
+  #chat-send{
+    background:var(--terracotta); color:var(--white); border:none; border-radius:6px;
+    width:40px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  #chat-error{font-size:11.5px; color:var(--terracotta); padding:0 16px 10px; display:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">Taquería <span>Puebla</span></div>
+    <nav class="links">
+      <a href="#historia">Historia</a>
+      <a href="#menu">Menú</a>
+      <a href="#galeria">Galería</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+    <a class="nav-cta" href="tel:5595550142">(559) 555-0142</a>
+  </div>
+</header>
+
+<div class="bunting">
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div>
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div>
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div>
+</div>
+
+<section class="hero">
+  <div class="eyebrow">Fresno, California · desde 2012</div>
+  <h1>Sabor de <em>Puebla</em>,<br>a la vuelta de tu casa</h1>
+  <p class="sub">Cemitas, mole poblano y tacos hechos como en casa de la abuela — con la receta que cruzó la frontera con nosotros.</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#menu">Ver el menú</a>
+    <a class="btn-secondary" href="#ubicacion">Cómo llegar</a>
+  </div>
+</section>
+
+<div class="tile-divider"></div>
+
+<section class="story" id="historia">
+  <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=1000&auto=format&fit=crop" alt="Salsas frescas preparadas en molcajete">
+  <div>
+    <h2>Una cocina, dos ciudades</h2>
+    <p>Doña Herminia trajo su recetario de Puebla a Fresno en 2012: mole con más de veinte ingredientes, cemitas con papalo traído cada semana, y tacos que se sirven como se sirven allá — sin adornos innecesarios.</p>
+    <p>Hoy la cocina la lleva su hijo Rubén, pero las recetas no han cambiado ni una coma.</p>
+    <div class="stat-row">
+      <div class="stat"><b>12</b><span>años en Fresno</span></div>
+      <div class="stat"><b>20+</b><span>ingredientes en el mole</span></div>
+      <div class="stat"><b>100%</b><span>hecho el mismo día</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" style="background:var(--white);">
+  <div class="section-head">
+    <div class="eyebrow">Menú</div>
+    <h2>Lo que se cocina hoy</h2>
+    <p>Precios por unidad salvo que se indique lo contrario. El menú de temporada cambia con la cosecha.</p>
+  </div>
+
+  <div class="menu-tabs">
+    <button class="tab-btn active" data-tab="tacos">Tacos</button>
+    <button class="tab-btn" data-tab="cemitas">Cemitas</button>
+    <button class="tab-btn" data-tab="antojitos">Antojitos</button>
+    <button class="tab-btn" data-tab="bebidas">Bebidas</button>
+  </div>
+
+  <div class="menu-grid active" data-panel="tacos">
+    <div class="dish"><div><h3>Al Pastor</h3><p>Cerdo marinado, piña, cebolla, cilantro</p></div><div class="price mono">$3.25</div></div>
+    <div class="dish"><div><h3>Carne Asada</h3><p>Res a la parrilla, cebolla, cilantro</p></div><div class="price mono">$3.50</div></div>
+    <div class="dish"><div><h3>Carnitas</h3><p>Cerdo cocido lentamente estilo Michoacán</p></div><div class="price mono">$3.25</div></div>
+    <div class="dish"><div><h3>Lengua</h3><p>Lengua de res, salsa verde</p></div><div class="price mono">$3.75</div></div>
+    <div class="dish veg"><div><h3>Nopales</h3><p>Nopal asado, queso fresco</p></div><div class="price mono">$3.00</div></div>
+  </div>
+
+  <div class="menu-grid" data-panel="cemitas">
+    <div class="dish"><div><h3>Cemita de Milanesa</h3><p>Pollo empanizado, aguacate, papalo, quesillo, chipotle</p></div><div class="price mono">$11.50</div></div>
+    <div class="dish"><div><h3>Cemita de Pierna</h3><p>Pierna de cerdo horneada, mismos acompañamientos</p></div><div class="price mono">$11.50</div></div>
+  </div>
+
+  <div class="menu-grid" data-panel="antojitos">
+    <div class="dish"><div><h3>Chiles en Nogada</h3><p>Temporada ago–sep. Poblano relleno, crema de nuez, granada</p></div><div class="price mono">$16.00</div></div>
+    <div class="dish"><div><h3>Mole Poblano</h3><p>Pollo en mole tradicional, arroz, tortillas</p></div><div class="price mono">$14.50</div></div>
+    <div class="dish veg"><div><h3>Elote</h3><p>Mayonesa, queso cotija, chile piquín</p></div><div class="price mono">$4.50</div></div>
+    <div class="dish veg"><div><h3>Esquites</h3><p>En vaso, con limón y chile</p></div><div class="price mono">$4.00</div></div>
+  </div>
+
+  <div class="menu-grid" data-panel="bebidas">
+    <div class="dish veg"><div><h3>Horchata</h3><p>De la casa, hecha diario</p></div><div class="price mono">$3.50</div></div>
+    <div class="dish veg"><div><h3>Jamaica</h3><p>Agua fresca de flor de jamaica</p></div><div class="price mono">$3.50</div></div>
+    <div class="dish"><div><h3>Coca-Cola Mexicana</h3><p>Botella de vidrio, azúcar de caña</p></div><div class="price mono">$3.00</div></div>
+    <div class="dish veg"><div><h3>Agua fresca de temporada</h3><p>Pregunta cuál hay hoy</p></div><div class="price mono">$3.50</div></div>
+  </div>
+</section>
+
+<div class="tile-divider"></div>
+
+<section id="galeria">
+  <div class="section-head">
+    <div class="eyebrow">Galería</div>
+    <h2>De la cocina a tu mesa</h2>
+  </div>
+  <div class="gallery">
+    <a href="#"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop" alt="Tacos servidos con cebolla y cilantro"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1613514785940-daed07799d9b?q=80&w=800&auto=format&fit=crop" alt="Preparación de comida callejera mexicana"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?q=80&w=800&auto=format&fit=crop" alt="Guacamole recién preparado"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=800&auto=format&fit=crop" alt="Interior cálido del restaurante"></a>
+  </div>
+</section>
+
+<div class="tile-divider"></div>
+
+<section id="ubicacion" style="padding-bottom:96px;">
+  <div class="location">
+    <div class="info">
+      <h2>Visítanos</h2>
+      <div class="info-row">
+        <div class="label">Dirección</div>
+        <div class="value">1847 Kern St, Fresno, CA 93706</div>
+      </div>
+      <div class="info-row">
+        <div class="label">Horario</div>
+        <div class="value">Lun–Sáb: 10:00 am – 9:00 pm<br>Dom: 10:00 am – 4:00 pm</div>
+      </div>
+      <div class="info-row">
+        <div class="label">Teléfono</div>
+        <div class="value">(559) 555-0142</div>
+      </div>
+      <div class="info-row">
+        <div class="label">Para llevar</div>
+        <div class="value">Pedidos por teléfono, listos en 15–20 min</div>
+      </div>
+    </div>
+    <div class="map-block">
+      <div class="map-card">
+        <div class="display">Kern St</div>
+        <p>A 5 minutos del centro de Fresno. Estacionamiento gratuito en la parte trasera.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">Taquería <span style="color:var(--terracotta)">Puebla</span></div>
+  <p>&copy; 2026 Taquería Puebla. Fresno, California.</p>
+</footer>
+
+<!-- ---------- CHATBOT ---------- -->
+<button id="chat-toggle" aria-label="Abrir chat" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2B211A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+  </svg>
+</button>
+
+<div id="chat-panel" role="dialog" aria-label="Chat de Taquería Puebla">
+  <div class="chat-head">
+    <div>
+      <div class="t">Asistente Puebla</div>
+      <div class="s">menú · horarios · ubicación</div>
+    </div>
+    <button class="chat-close" id="chat-close" aria-label="Cerrar chat">&times;</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div id="chat-error"></div>
+  <form id="chat-form">
+    <textarea id="chat-input" rows="1" placeholder="Pregunta algo..." aria-label="Escribe tu mensaje"></textarea>
+    <button type="submit" id="chat-send" aria-label="Enviar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+    </button>
+  </form>
+</div>
+
+<script>
+  // ---------- Menu tabs ----------
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.menu-grid').forEach(g=>g.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelector('.menu-grid[data-panel="'+btn.dataset.tab+'"]').classList.add('active');
+    });
+  });
+
+  // ---------- Chatbot ----------
+  // El navegador NUNCA habla directo con Anthropic ni conoce la API key.
+  // Llama a /api/chat (función serverless propia) que sí conoce la key
+  // y aplica el system prompt y los límites de uso del lado del servidor.
+  const CHAT_ENDPOINT = '/api/chat';
+
+  let history = [];
+  const panel = document.getElementById('chat-panel');
+  const toggleBtn = document.getElementById('chat-toggle');
+  const closeBtn = document.getElementById('chat-close');
+  const messagesEl = document.getElementById('chat-messages');
+  const form = document.getElementById('chat-form');
+  const input = document.getElementById('chat-input');
+  const errorEl = document.getElementById('chat-error');
+
+  function addMessage(role, text){
+    const div = document.createElement('div');
+    div.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+    div.textContent = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  function addTyping(){
+    const div = document.createElement('div');
+    div.className = 'msg typing';
+    div.id = 'typing-indicator';
+    div.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+  function removeTyping(){
+    const t = document.getElementById('typing-indicator');
+    if(t) t.remove();
+  }
+
+  toggleBtn.addEventListener('click', ()=>{
+    const isOpen = panel.classList.toggle('open');
+    toggleBtn.setAttribute('aria-expanded', isOpen);
+    if(isOpen && messagesEl.children.length === 0){
+      addMessage('bot', '¡Hola! Pregúntame sobre el menú, precios, horarios o ubicación. / Hi! Ask me about the menu, prices, hours or location.');
+    }
+    if(isOpen) input.focus();
+  });
+  closeBtn.addEventListener('click', ()=>{
+    panel.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  });
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const text = input.value.trim();
+    if(!text) return;
+    errorEl.style.display = 'none';
+    addMessage('user', text);
+    history.push({role:'user', content: text});
+    input.value = '';
+    input.style.height = 'auto';
+    addTyping();
+
+    try{
+      const response = await fetch(CHAT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history })
+      });
+
+      const data = await response.json();
+
+      if(!response.ok){
+        throw new Error(data.error || ('Request failed with status ' + response.status));
+      }
+
+      removeTyping();
+
+      if(!data.reply){
+        throw new Error('Empty response');
+      }
+
+      addMessage('bot', data.reply);
+      history.push({role:'assistant', content: data.reply});
+
+    }catch(err){
+      removeTyping();
+      errorEl.textContent = (err.message && err.message.length < 120)
+        ? err.message
+        : 'No se pudo conectar con el asistente. Intenta de nuevo o llama al (559) 555-0142.';
+      errorEl.style.display = 'block';
+      console.error('Chat error:', err);
+    }
+  });
+
+  input.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' && !e.shiftKey){
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+  input.addEventListener('input', ()=>{
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 90) + 'px';
+  });
+</script>
+
+</body>
+</html>
